@@ -1,3 +1,6 @@
+
+
+
 create table Gamers
 (
 	id serial primary key,
@@ -23,16 +26,26 @@ create table GamerPlayedGame
 	idGamers int references Gamers(id),
 	idGames int references Games(id),
 	start timestamp default now(),
-	finish timestamp
+	finish timestamp 
 ); -- dorobic 
 
-select * from GamersGamesList;
+create or replace view GamerPlayedGameList as
+select start, finish, Games.name, Gamers.nick from GamerPlayedGame 
+join Games on GamerPlayedGame.idGames = Games.id
+join Gamers on GamerPlayedGame.idGamers = Gamers.id;
+
+select * from GamerPlayedGameList;
+insert into GamerPlayedGame (idGamers, idGames, finish) values (1,2, '2022-01-12 20:00');
+
+
 
 create or replace view GamersGamesList as
 
 select Gamers.nick, Games.name from 
 GamersGames join Games on GamersGames.idGames = Games.id
 join Gamers on GamersGames.idGamers = Gamers.id;
+
+select * from GamersGamesList;
 
 insert into Gamers (nick) values ('Mały512');
 insert into Gamers (nick) values ('Patton888');
