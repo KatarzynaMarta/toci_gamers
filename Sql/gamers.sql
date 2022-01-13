@@ -27,12 +27,36 @@ create table GamerPlayedGame
 	idGames int references Games(id),
 	start timestamp default now(),
 	finish timestamp 
-); -- dorobic 
+);-- dorobic
 
+create table competitions
+(
+	id serial primary key,
+	idGames int references Games(id),
+	time timestamp
+		
+);
+create table EnrolledCompetitors
+(
+	id serial primary key,
+	idGamers int references Gamers(id),
+	idCompetitions int references Competitions(id)
+	
+);
+
+create or replace view EnrolledCompetitorsList as
+select competitions.time, Gamers.nick, Games.name
+from EnrolledCompetitors join Gamers on EnrolledCompetitors.idGamers = Gamers.id
+join Competitions on EnrolledCompetitors.idCompetitions = Competitions.id
+join Games on Competitions.idGames = Games.id;
+
+select * from EnrolledCompetitorsList;
+-- w zglaszajacych sie competitors bedzie zglaszajacy sie zawodnik czyli id gamera i id zawodow
 create or replace view GamerPlayedGameList as
 select start, finish, Games.name, Gamers.nick from GamerPlayedGame 
 join Games on GamerPlayedGame.idGames = Games.id
 join Gamers on GamerPlayedGame.idGamers = Gamers.id;
+
 
 select * from GamerPlayedGameList;
 insert into GamerPlayedGame (idGamers, idGames, finish) values (1,2, '2022-01-12 20:00');
