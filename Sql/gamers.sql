@@ -44,6 +44,30 @@ create table EnrolledCompetitors
 	
 );
 
+create table Teams
+(
+	id serial primary key,
+	name text,
+	idGame int references Games(id)
+);
+create table TeamsPlayers
+(
+	id serial primary key,
+	idTeams int references Teams(id),
+	idGamer int references Gamers(id)
+);
+select * from Teams;
+insert into teams (name,idGame) values ('Mongolowie', 1)
+insert into TeamsPlayers (idTeams, idGamer) values (2,2)
+create or replace view TeamPlayersList as
+select Teams.name as team, Gamers.nick, Games.name as game
+from TeamsPlayers join Teams on Teams.id = TeamsPlayers.idTeams
+join Gamers on Gamers.id = TeamsPlayers.idGamer
+join Games on Games.id = Teams.idGame;
+
+select * from TeamPlayersList;
+
+
 create or replace view EnrolledCompetitorsList as
 select competitions.time, Gamers.nick, Games.name
 from EnrolledCompetitors join Gamers on EnrolledCompetitors.idGamers = Gamers.id
@@ -88,3 +112,27 @@ insert into GamersGames (idGamers, idGames) values (2, 1);
 
 -- 1, 1, 1
 -- 2, 1, 2
+
+create table Duels
+(
+	id serial primary key,
+	idPlayerOne int references Gamers(id),
+	idPlayerTwo int references Gamers(id)
+);
+
+create table Results
+(
+	id serial primary key,
+	Results int,
+	
+);
+
+select * from DuelsList;
+create or replace view DuelsList as
+select Results, Gamers.nick as GamerOne , Gamers.nick as GamerTwo
+from Duels join Results on idPlayerOne = Duels.id
+join Gamers on idPlayerTwo = Duels.id 
+;
+
+
+-- kolumna player 1, player 2 ref do gamera oraz kolumna intowa do wyniku
