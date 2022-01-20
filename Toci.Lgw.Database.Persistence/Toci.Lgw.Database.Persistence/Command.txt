@@ -1,0 +1,16 @@
+﻿
+dotnet ef dbcontext scaffold "Host=localhost;Database=Toci.Gamers;Username=postgres;Password=dupa1234" Npgsql.EntityFrameworkCore.PostgreSQL -o Models
+
+
+Install-Package Microsoft.EntityFrameworkCore -ProjectName Toci.Lgw.Database.Persistence
+Install-Package Microsoft.EntityFrameworkCore.Design -ProjectName Toci.Lgw.Database.Persistence
+
+Install-Package Microsoft.EntityFrameworkCore.Tools.DotNet -ProjectName Toci.Lgw.Database.Persistence
+
+Install-Package Microsoft.EntityFrameworkCore.Relational -ProjectName Toci.Lgw.Database.Persistence
+Install-Package Microsoft.NETCore.App -ProjectName Toci.Lgw.Database.Persistence
+Install-Package Npgsql.EntityFrameworkCore.PostgreSQL -ProjectName Toci.Lgw.Database.Persistence
+Install-Package Npgsql.EntityFrameworkCore.PostgreSQL.Design -ProjectName Toci.Lgw.Database.Persistence
+
+
+dotnet tool install --global dotnet-ef

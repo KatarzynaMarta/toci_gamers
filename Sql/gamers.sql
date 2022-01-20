@@ -117,21 +117,21 @@ create table Duels
 (
 	id serial primary key,
 	idPlayerOne int references Gamers(id),
-	idPlayerTwo int references Gamers(id)
+	idPlayerTwo int references Gamers(id),
+	idGame int references Games(id),
+	Result int
 );
 
-create table Results
-(
-	id serial primary key,
-	Results int,
-	
-);
 
 select * from DuelsList;
 create or replace view DuelsList as
-select Results, Gamers.nick as GamerOne , Gamers.nick as GamerTwo
-from Duels join Results on idPlayerOne = Duels.id
-join Gamers on idPlayerTwo = Duels.id 
+select Duels.Result, Games.name, g1.nick as GamerOne , g2.nick as GamerTwo from Duels
+join Gamers g1 on Duels.idPlayerOne = g1.id
+join Gamers g2 on Duels.idPlayerTwo = g2.id
+join Games on Duels.idGame = Games.id;
+
+
+ 
 ;
 
 
