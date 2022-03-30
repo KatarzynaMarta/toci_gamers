@@ -32,12 +32,25 @@ namespace Toci.Teutons.Tests
                 Assert.AreEqual(item.Result, ben.Substring(item.Element, item.Position, item.Length));
             }
         }
-        
+
         [TestMethod]
-        public virtual void DateTest()
+        public void TestContains()
         {
-            
+            //
+            Benchmark ben = new Benchmark();
+
+            bool result = ben.Contains("beatka", "atk");
+/*            List<SubstringEntity> testCases = new List<SubstringEntity>()
+            {
+                new SubstringEntity() { Element = "beatka", Result = "ea", Position = 1, Length = 2 } // ??????
+            };
+
+            foreach (SubstringEntity item in testCases)
+            {
+                Assert.AreEqual(item.Result, ben.Substring(item.Element, item.Position, item.Length));
+            }*/
         }
+
     }
 
 }
