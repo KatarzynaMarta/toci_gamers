@@ -46,6 +46,13 @@ namespace Toci.Teutons.Tests
 
             bool result = ben.Contains("beatka", "atk");
         }
+
+        [TestMethod]
+        public void CheckExtensions()
+        {
+            Benchmark b = new Benchmark();
+            b.ContainsToLower("x", "y");
+        }
     }
 
 }
