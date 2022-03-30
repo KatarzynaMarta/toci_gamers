@@ -24,8 +24,10 @@ namespace Toci.Teutons.Training
 
         public virtual bool Contains(string haystack, string needle)
         {
-            //beatka
-
+            // beatka eat
+            // tka
+            //"".con
+            // like %dupa%
             bool contains;
 
             for (int i = 0; i < haystack.Length; i++)
@@ -47,7 +49,7 @@ namespace Toci.Teutons.Training
             return false;
         }
 
-        //532 -> pięćset trzydziesty drugi
+        // 532 -> Pięćset trzydziesty drugi
         //
     }
 }
