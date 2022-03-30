@@ -49,6 +49,11 @@ namespace Toci.Teutons.Training
             return false;
         }
 
+        private int dupa()
+        {
+
+        }
+
         // 532 -> Pięćset trzydziesty drugi
         //
     }
