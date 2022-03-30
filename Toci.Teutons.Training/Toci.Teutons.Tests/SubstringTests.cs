@@ -32,5 +32,12 @@ namespace Toci.Teutons.Tests
                 Assert.AreEqual(item.Result, ben.Substring(item.Element, item.Position, item.Length));
             }
         }
+        
+        [TestMethod]
+        public virtual void DateTest()
+        {
+            
+        }
     }
+
 }
