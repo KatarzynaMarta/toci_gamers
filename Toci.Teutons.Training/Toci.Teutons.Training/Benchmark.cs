@@ -21,5 +21,35 @@ namespace Toci.Teutons.Training
         }
 
         //Substring("beatka", 2, 6);
+
+        public virtual bool Contains(string haystack, string needle)
+        {
+            // beatka eat
+            // tka
+            //"".con
+            // like %dupa%
+            bool contains;
+
+            for (int i = 0; i < haystack.Length; i++)
+            {
+                for (int j = 0; j < needle.Length; j++)
+                {
+                    if (haystack[i] == needle[j])
+                    {
+                        if (j == needle.Length - 1)
+                        {
+                            return true;
+                        }
+
+                        i++;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        // 532 -> Pięćset trzydziesty drugi
+        //
     }
 }

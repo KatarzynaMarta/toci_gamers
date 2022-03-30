@@ -38,6 +38,14 @@ namespace Toci.Teutons.Tests
         {
             
         }
+
+        [TestMethod]
+        public void TestContains()
+        {
+            Benchmark ben = new Benchmark();
+
+            bool result = ben.Contains("beatka", "atk");
+        }
     }
 
 }
