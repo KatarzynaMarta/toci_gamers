@@ -8,5 +8,6 @@ namespace Toci.Teutons.Tests
 {
     class Teamwork
     {
+        
     }
 }
