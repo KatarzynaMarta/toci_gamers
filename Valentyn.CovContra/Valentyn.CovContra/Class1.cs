@@ -9,5 +9,9 @@ namespace Valentyn.CovContra
 
         // classofcourse
         // classofsubject
+
+        IMessageBody body = new MessageBodyPrg();
+        IResponse response = new ResponsePrg();
+        SendManagerV manager = new SendManagerV(body, response);
     }
 }

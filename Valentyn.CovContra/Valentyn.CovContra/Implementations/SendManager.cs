@@ -9,7 +9,7 @@ namespace Valentyn.CovContra.Implementations
 {
     public class SendManager
     {
-        protected Dictionary<string, ISendHandler<string, string>> map;
+        protected Dictionary<string, Func<ISendHandler<string, string>>> map;
         //
     }
 }

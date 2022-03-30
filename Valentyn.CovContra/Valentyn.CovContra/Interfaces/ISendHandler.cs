@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Valentyn.CovContra.Interfaces
 {
-    public interface ISendHandler<TMessageBody, TResponse>
+    public interface ISendHandler<in TMessageBody, out TResponse>
     {
         TResponse Send(TMessageBody messageBody);
     }
