@@ -44,7 +44,7 @@ namespace Toci.Teutons.Tests
               [TestMethod]
               public void NumberToWordsTest()
               {
-                     Benchmark ben = new Benchmark();
+                     KamilBenchmark ben = new KamilBenchmark();
                      List<NumberProperty> testCase = new List<NumberProperty>()
                      {
                             new NumberProperty() {Number = "542", Result = "piećset czterdzieści dwa"},
