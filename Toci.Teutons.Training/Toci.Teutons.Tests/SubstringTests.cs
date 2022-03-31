@@ -40,7 +40,6 @@ namespace Toci.Teutons.Tests
 
             bool result = ben.Contains("beatka", "atk");
         }
-
     }
 
 }
