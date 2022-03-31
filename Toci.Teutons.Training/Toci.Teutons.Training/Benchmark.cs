@@ -26,6 +26,14 @@ namespace Toci.Teutons.Training
 
         public virtual bool Contains(string haystack, string needle)
         {
+            // beatka eat
+            // tka
+            //"".con
+            // like %dupa%
+            bool contains;
+
+            //if ()
+
             for (int i = 0; i < haystack.Length; i++)
             {
                 for (int j = 0; j < needle.Length; j++)
