@@ -44,7 +44,7 @@ namespace Toci.Teutons.Tests
         {
             Benchmark ben = new Benchmark();
 
-            bool result = ben.Contains("beatka", "atk");
+            bool result = ben.Contains("bea", "beatk");
         }
     }
 

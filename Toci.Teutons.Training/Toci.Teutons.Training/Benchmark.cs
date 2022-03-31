@@ -30,6 +30,8 @@ namespace Toci.Teutons.Training
             // like %dupa%
             bool contains;
 
+            //if ()
+
             for (int i = 0; i < haystack.Length; i++)
             {
                 for (int j = 0; j < needle.Length; j++)
