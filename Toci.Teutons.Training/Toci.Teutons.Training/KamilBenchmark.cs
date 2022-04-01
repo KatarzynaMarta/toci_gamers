@@ -83,7 +83,7 @@ namespace Toci.Teutons.Training
         };
         protected Dictionary<string, string> hundredsWordsMap = new Dictionary<string, string>()
         {
-            { "1", "sto"},
+            { "100", "sto"},
             { "2", "dwieście" },
             { "3", "trzysta" },
             { "4", "czterysta" },
@@ -104,6 +104,7 @@ namespace Toci.Teutons.Training
             string selectedValue = string.Empty;
             string selectedValue2 = string.Empty;
             string selectedValue3 = string.Empty;
+
             if (numberParsed < 10)
             {
                 return result = nubersWordsMap[number];
@@ -130,19 +131,30 @@ namespace Toci.Teutons.Training
 
             if (numberParsed > 100 && numberParsed < 1000)
             {
-                string first = number.Substring(0, 1);
-                string second = number.Substring(1, 1);
-                string third = number.Substring(2, 1);
-
-                selectedValue = hundredsWordsMap[first];
-                selectedValue2 = decimalWordsMap[second];
-                selectedValue3 = nubersWordsMap[third];
-
-                sb.Append(selectedValue);
-                sb.Append(' ');
-                sb.Append(selectedValue2);
-                sb.Append(' ');
-                sb.Append(selectedValue3);
+                string checkNumber = string.Empty;
+                for (int i = 0; i < number.Length; i++)
+                {
+                    checkNumber = number[i].ToString();
+                    if (i == 0)
+                    {
+                        selectedValue = hundredsWordsMap[checkNumber];
+                        sb.Append(selectedValue);
+                        sb.Append(' ');
+                    }
+                    if (i == 1)
+                    {
+                        selectedValue = decimalWordsMap[checkNumber];
+                        sb.Append(selectedValue);
+                        sb.Append(' ');
+                    }
+                    else if (i == 2)
+                    {
+                        selectedValue = nubersWordsMap[checkNumber];
+                        sb.Append(selectedValue);
+                    }
+                  
+                }
+                
                 result = sb.ToString();
             }
 
