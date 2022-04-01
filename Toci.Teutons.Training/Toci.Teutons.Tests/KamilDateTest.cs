@@ -11,6 +11,18 @@ namespace Toci.Teutons.Tests
        [TestClass]
        public class KamilDateTest : SubstringTests
        {
+        [TestMethod]
+        public void Select()
+        {
+            List<DateProperty> lista = new List<DateProperty>()
+            {
+                new DateProperty() { Date = "8.08", ResultIsValid = true },
+                new DateProperty() { Date = "28.08", ResultIsValid = false },
+                new DateProperty() { Date = "18.08", ResultIsValid = true },
+            };
+
+            List<bool> result =  lista.Select(m => m.ResultIsValid).ToList();
+        }
 
               class DateProperty
               {
@@ -48,6 +60,7 @@ namespace Toci.Teutons.Tests
                      List<NumberProperty> testCase = new List<NumberProperty>()
                      {
                             new NumberProperty() {Number = "542", Result = "piećset czterdzieści dwa"},
+                            new NumberProperty() {Number = "512", Result = "piećset dwanaście"},
                             new NumberProperty() {Number = "54", Result = "piećdziesiąt cztery"},
                             new NumberProperty() {Number = "15", Result = "piętnaście"},
                             new NumberProperty() {Number = "1", Result = "jeden"}
