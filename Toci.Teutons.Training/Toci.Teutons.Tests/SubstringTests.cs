@@ -40,16 +40,6 @@ namespace Toci.Teutons.Tests
 
             bool result = ben.Contains("bea", "beatk");
         }
-
-        public void SwitchTest()
-        {
-            int i = 0;
-            switch (i)
-            {
-                case 0:
-                    break;
-            }
-        }
     }
 
 }

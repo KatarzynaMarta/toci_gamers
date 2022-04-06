@@ -83,7 +83,7 @@ namespace Toci.Teutons.Training
         };
         protected Dictionary<string, string> hundredsWordsMap = new Dictionary<string, string>()
         {
-            { "100", "sto"},
+            { "1", "sto"},
             { "2", "dwieście" },
             { "3", "trzysta" },
             { "4", "czterysta" },
