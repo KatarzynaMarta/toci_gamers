@@ -15,12 +15,13 @@ namespace Toci.Teutons.RandomStringsExecutable
                 "Get Random Password - 2 \n" +
                 "Get Strong Random Password - 3");
 
-            ConsoleKeyInfo choiceKey = Console.ReadKey();
 
+
+            ConsoleKeyInfo choiceKey = Console.ReadKey();
 
             if (choiceKey.Key.Equals(ConsoleKey.D1) | choiceKey.Key.Equals(ConsoleKey.D2) | choiceKey.Key.Equals(ConsoleKey.D3))
             {
-                StringBuilder sb = new StringBuilder();
+                string result = string.Empty;
 
                 int choice = int.Parse(choiceKey.KeyChar.ToString());
 
@@ -32,8 +33,8 @@ namespace Toci.Teutons.RandomStringsExecutable
                         {
                             Console.WriteLine("Pass Second Integer (MaxLength String) ");
 
-                            if (int.TryParse(Console.ReadLine(), out int maxLengthInput) && maxLengthInput > minLengthInput) 
-                                GetRandomString(minLengthInput, maxLengthInput, ref sb);
+                            if (int.TryParse(Console.ReadLine(), out int maxLengthInput) && maxLengthInput > minLengthInput)
+                                result = GetRandomString(minLengthInput, maxLengthInput);
                             else return "\nWrong maxLengthInput";
                         }
                         else return "\nWrong minLengthInput";
@@ -42,29 +43,29 @@ namespace Toci.Teutons.RandomStringsExecutable
                         break;
 
                     case 2:
-                        GetRandomPassword(ref sb);
+                        result = GetRandomPassword();
 
                         break;
 
                     case 3:
-                        GetStrongRandomPassword(ref sb);
+                        result = GetStrongRandomPassword();
 
                         break;
 
                 }
 
-                Console.WriteLine("\n\nGenerated string length = " + sb.ToString().Length);
+                Console.WriteLine("\n\nGenerated string length = " + result.Length);
 
-                return sb.ToString();
+                return result;
             }
             else return "\nInvalid number option";
         }
 
-        protected abstract void GetRandomString(int minLength, int maxLength, ref StringBuilder sbResult);
+        protected abstract string GetRandomString(int minLength, int maxLength);
 
-        protected abstract void GetRandomPassword(ref StringBuilder sbResult); // edascx86A
+        protected abstract string GetRandomPassword(); // edascx86A
 
-        protected abstract void GetStrongRandomPassword(ref StringBuilder sbResult); // F_we23@azWEc^&8
+        protected abstract string GetStrongRandomPassword(); // F_we23@azWEc^&8
 
         // ascii
     }

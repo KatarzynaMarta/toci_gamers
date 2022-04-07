@@ -8,38 +8,45 @@ namespace Toci.Teutons.RandomStringsExecutable
 {
     public class PrzemekGeneratorExtension : PrzemekGeneratorBase
     {
+        StringBuilder sb = new StringBuilder();
         protected int passwordLength;
         Random r = new Random();
 
-        protected override void GetRandomString(int minLength, int maxLength, ref StringBuilder sbResult)
+        protected override string GetRandomString(int minLength, int maxLength)
         {
             passwordLength = r.Next(minLength, maxLength);
 
             for (int i = 0; i < passwordLength; i++)
             {
-                sbResult.Append(r.Next(0, 2) == 0 ? Convert.ToChar(r.Next(65, 90)) : Convert.ToChar(r.Next(97, 122)));
+                sb.Append(r.Next(0, 2) == 0 ? Convert.ToChar(r.Next(65, 90)) : Convert.ToChar(r.Next(97, 122)));
             }
+
+            return sb.ToString();
         }
 
-        protected override void GetRandomPassword(ref StringBuilder sbResult)
+        protected override string GetRandomPassword()
         {
             passwordLength = r.Next(8, 40);
 
             for (int i = 0; i < passwordLength; i++)
             {
-                sbResult.Append(r.Next(0, 2) == 0 ? Convert.ToChar(r.Next(65, 90)) : Convert.ToChar(r.Next(97, 122)));
+                sb.Append(r.Next(0, 2) == 0 ? Convert.ToChar(r.Next(65, 90)) : Convert.ToChar(r.Next(97, 122)));
             }
+
+            return sb.ToString();
         }
 
 
-        protected override void GetStrongRandomPassword(ref StringBuilder sbResult)
+        protected override string GetStrongRandomPassword()
         {
             passwordLength = r.Next(8, 40);
 
             for (int i = 0; i < passwordLength; i++)
             {
-                sbResult.Append(Convert.ToChar(r.Next(33, 126)));
+                sb.Append(Convert.ToChar(r.Next(33, 126)));
             }
+
+            return sb.ToString();
         }
     }
 }
