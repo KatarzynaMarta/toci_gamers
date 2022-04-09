@@ -5,7 +5,7 @@ namespace Toci.Teutons.Training.RandomStrings
 {
 	public abstract class KamilGeneratorBase
 	{
-		public abstract void GetRandomString(int minLength, int maxLength);
+		public abstract string GetRandomString(int minLength, int maxLength);
 
 		public abstract void GetRandomPassword(ref int size, ref char[] chars, ref Random rando); // edascx86A
 

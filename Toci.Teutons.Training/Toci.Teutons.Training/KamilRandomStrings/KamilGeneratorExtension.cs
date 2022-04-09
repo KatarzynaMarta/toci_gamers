@@ -8,7 +8,7 @@ namespace Toci.Teutons.Training.RandomStrings
 {
     public class KamilGeneratorExtension : KamilGeneratorBase
     {
-        public override void GetRandomString(int minLength, int maxLength)
+        public override string GetRandomString(int minLength, int maxLength)
         {
             string validChars = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
@@ -22,7 +22,7 @@ namespace Toci.Teutons.Training.RandomStrings
                 chars[i] = validChars[random.Next(0, validChars.Length)];
             }
 
-           // return new string(chars);
+            return new string(chars);
         }
 
         public virtual string GetRandomBase(int minLength, int maxLength)
