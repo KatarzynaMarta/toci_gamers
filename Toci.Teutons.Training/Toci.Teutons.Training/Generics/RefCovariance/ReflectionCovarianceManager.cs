@@ -17,7 +17,8 @@ namespace Toci.Teutons.Training.Generics.RefCovariance
             {
                 // ?? new baseclass<item>
                 Type tGen = baseClass.MakeGenericType(item);
-                result.Add(item.Name, Activator.CreateInstance(tGen));
+                //object el = Activator.CreateInstance(item);
+                result.Add(item.Name, Activator.CreateInstance(item));
             }
 
             return result;

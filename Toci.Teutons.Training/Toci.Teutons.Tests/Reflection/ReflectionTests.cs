@@ -9,8 +9,10 @@ using Toci.Teutons.Training.Generics.RefCovariance;
 
 namespace Toci.Teutons.Tests.Reflection
 {
+    public interface ITest { }
+
     [TestClass]
-    public class ReflectionTests
+    public class ReflectionTests : ITest
     {
         [TestMethod]
         public void FirstTest()
@@ -38,7 +40,7 @@ namespace Toci.Teutons.Tests.Reflection
         }
     }
 
-    public class ReflectionFunEntity
+    public class ReflectionFunEntity : ZabawaDoKwadratu
     {
         private int IWantToBeInvisible;
         private int IAlsoWantToBeInvisible;
@@ -46,7 +48,7 @@ namespace Toci.Teutons.Tests.Reflection
     }
 
     [TestClass]
-    public class ExClass
+    public class ExClass : ZabawaDoKwadratu
     {
         public string IAmGenericMethod<T>(T instance)
         {
@@ -92,5 +94,42 @@ namespace Toci.Teutons.Tests.Reflection
 
             Dictionary<string, object> result = test.GetInstances(typeof(List<>), new List<Type>() { "".GetType(), 2.GetType() });
         }
+
+        private string IAmPrivate()
+        {
+            return "He's a private !";
+        }
+    }
+
+    [TestClass]
+    public class ReflectionRevisited : ZabawaDoKwadratu
+    {
+        [TestMethod]
+        public void Test()
+        {
+            ZabawaDoKwadratu zabawa = new ZabawaDoKwadratu();
+
+            MethodInfo mIn = zabawa.GetType().GetMethod("IAmPrivate", BindingFlags.Instance | BindingFlags.NonPublic);
+
+           object result =  mIn.Invoke(zabawa, null);
+        }
+
+        [TestMethod]
+        public void DerivingTypes()
+        {
+            //ZabawaDoKwadratu
+            List<Type> types = typeof(ZabawaDoKwadratu).Assembly.GetTypes().ToList();
+
+            List<Type> derivingTypes  = types.Where(t => t.IsSubclassOf(typeof(ZabawaDoKwadratu))).ToList();
+            List<Type> IderivingTypes = types.Where(t => typeof(ITest).IsAssignableFrom(t)).ToList();
+
+
+            ReflectionCovarianceManager test = new ReflectionCovarianceManager();
+
+                Dictionary<string, object> result = test.GetInstances(typeof(List<>), derivingTypes);
+            
+        }
+
+
     }
 }
