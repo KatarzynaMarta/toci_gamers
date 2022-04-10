@@ -1,12 +1,58 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Toci.Teutons.RandomExecutable
 {
     class Program
     {
+  
+        static void WidthChange()
+        {
+            int Width = Console.WindowWidth;
+
+            while (true)
+            {
+                if (Width != Console.WindowWidth)
+                {
+                    RenderLine(Console.WindowWidth - Width);
+                    Width = Console.WindowWidth;
+                }
+
+                Thread.Sleep(100);
+            }
+        }
+
+        static void RenderLine(int widthChange)
+        {
+            if (widthChange > 0)
+            {
+                for (int i = 0; i < widthChange; i++)
+                {
+                    Console.Write("-");
+                }
+            }
+            else
+            {
+                for (int i = widthChange; i < 0; i++)
+                {
+                    Console.Write("\b \b");
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Say something:");
+
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                Console.Write("-");
+            }
+
+            TaskFactory taskFactory = new TaskFactory();
+
+            taskFactory.StartNew(WidthChange);
 
             /*string userInput = Console.ReadLine();
 

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Toci.Earrai.Warehouse.BackYard\Toci.Earrai.Warehouse.BackYard.csproj" />
+    <ProjectReference Include="..\Toci.Earrai.Warehouse.Interfaces\Toci.Earrai.Warehouse.Interfaces.csproj" />
+    <ProjectReference Include="..\Toci.Earrai.Warehouse.Porch\Toci.Earrai.Warehouse.Porch.csproj" />
+  </ItemGroup>
+
+</Project>
